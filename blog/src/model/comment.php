@@ -1,6 +1,7 @@
 <?php
+namespace Application\Model\Comment;
 
-require_once('src/lib/database.php');
+use Application\Lib\DatabaseConnection;
 
 class Comment
 {
@@ -16,8 +17,7 @@ class CommentRepository
     public function getComments(string $post): array
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date 
-            FROM comments WHERE post_id = ? ORDER BY comment_date DESC"
+            "SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC"
         );
         $statement->execute([$post]);
 
