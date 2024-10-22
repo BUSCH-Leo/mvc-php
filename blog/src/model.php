@@ -7,12 +7,12 @@ function getPosts() {
     );
     $posts = [];
     while (($row = $statement->fetch())) {
-		$post = [
-			'title' => $row['title'],
-			'french_creation_date' => $row['french_creation_date'],
-			'content' => $row['content'],
-			'identifier' => $row['id'],
-		];
+        $post = [
+            'title' => $row['title'],
+            'french_creation_date' => $row['french_creation_date'],
+            'content' => $row['content'],
+            'identifier' => $row['id'],
+        ];
 
         $posts[] = $post;
     }
@@ -32,6 +32,7 @@ function getPost($identifier) {
         'title' => $row['title'],
         'french_creation_date' => $row['french_creation_date'],
         'content' => $row['content'],
+        'identifier' => $row['id'],
     ];
 
     return $post;
@@ -39,11 +40,7 @@ function getPost($identifier) {
 
 function dbConnect()
 {
-    try {
-        $database = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'root');
+    $database = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'blog', 'password');
 
-        return $database;
-    } catch(Exception $e) {
-        die('Erreur : '.$e->getMessage());
-    }
+    return $database;
 }
