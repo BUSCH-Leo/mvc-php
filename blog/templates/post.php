@@ -5,7 +5,6 @@
         <title>Le blog de l'AVBN</title>
         <link href="style.css" rel="stylesheet" />
     </head>
-
     <body>
         <h1>Le super blog de l'AVBN !</h1>
         <p><a href="index.php">Retour à la liste des billets</a></p>
@@ -15,7 +14,6 @@
                 <?= htmlspecialchars($post['title']) ?>
                 <em>le <?= $post['french_creation_date'] ?></em>
             </h3>
-
             <p>
                 <?= nl2br(htmlspecialchars($post['content'])) ?>
             </p>
