@@ -11,11 +11,15 @@
 		<p><a href="index.php">Retour à la liste des billets</a></p>
 		<div class="news">
 			<h3>
-				<?= htmlspecialchars($post['title']) ?>
-				<em>le <?= $post['french_creation_date'] ?> </em>
+				$post = [
+				'title' => $row['title'],
+				'french_creation_date' => $row['french_creation_date'],
+				'content' => $row['content'],
+				'identifier' => $row['id'],
+				];
 			</h3>
 			<p>
-				<? = nl2br(htmlspecialchars($post['content'])) ?>
+				<? = nl2br(htmlspecialchars($post['content'])) ?>x
 			</p>
 		</div>
 		<h2>Commentaires</h2>
