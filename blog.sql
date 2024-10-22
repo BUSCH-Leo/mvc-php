@@ -1,7 +1,4 @@
 -- Ce fichier sert à initialiser la base de données
-DROP DATABASE IF EXISTS `blog`;
-CREATE DATABASE IF NOT EXISTS `blog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `blog`;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -21,3 +18,21 @@ ALTER TABLE `posts`
 
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+CREATE TABLE `comments` (
+    `id` int (11) NOT NULL,
+    `post_id` INT (11) NOT NULL,
+    `author` varchar(255) NOT NULL,
+    `comment` text NOT NULL,
+    `comment_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`) VALUES
+(1, 1, 'Mathieu', 'Preum\'s', '2022-03-03 13:00:42'),
+(2, 1, 'Sam', 'Quelqu\'un a un avis là-dessus ? Je ne sais pas quoi en penser.', '2022-03-03 13:01:42');
+
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3
